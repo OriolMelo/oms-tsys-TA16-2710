@@ -1,41 +1,41 @@
--- 1.1
+-- 2.1
 select apellidos from empleados;
--- 1.2
+-- 2.2
 select distinct apellidos from empleados;
--- 1.3
+-- 2.3
 select * from empleados where apellidos = "Smith";
--- 1.4
+-- 2.4
 select * from empleados where apellidos = "Smith" or apellidos = "Rogers";
--- 1.5
+-- 2.5
 select * from empleados where departamento = 14;
--- 1.6
+-- 2.6
 select * from empleados where departamento in (37, 77);
--- 1.7
+-- 2.7
 select * from empleados where apellidos like "P%";
--- 1.8
+-- 2.8
 select sum(presupuesto) from departamentos;
--- 1.9
+-- 2.9
 select departamento, COUNT(*) from empleados group by departamento;
--- 1.10
+-- 2.10
 select * from empleados, departamentos where empleados.departamento = departamentos.codigo;
--- 1.11
+-- 2.11
 select empleados.nombre, empleados.apellidos, departamentos.nombre, departamentos.presupuesto from empleados, departamentos where empleados.departamento = departamentos.codigo;
--- 1.12
+-- 2.12
 select empleados.nombre, empleados.apellidos from empleados, departamentos where empleados.departamento = departamentos.codigo and departamentos.presupuesto > 60000;
--- 1.13
+-- 2.13
 select * from departamentos where presupuesto > (select avg(presupuesto) from departamentos);
--- 1.14
+-- 2.14
 select nombre from departamentos where codigo in (select departamento from empleados group by departamento having count(*)>2);
--- 1.15
+-- 2.15
 insert into departamentos (codigo, nombre, presupuesto) values (11, "Calidad", 40000);
 insert into empleados (dni, nombre, apellidos, departamento) values (89267109, "Esther", "Vázquez", 11);
--- 1.16
+-- 2.16
 update departamentos set presupuesto = presupuesto*0.9;
--- 1.17
+-- 2.17
 update empleados set departamento = 14 where departamento = 77;
--- 1.18
+-- 2.18
 delete from empleados where departamento = 14;
--- 1.19
+-- 2.19
 delete from empleados where departamento in (select codigo from departamentos where presupuesto > 60000);
--- 1.20
+-- 2.20
 delete from empleados;
